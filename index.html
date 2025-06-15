@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <title>Vidhi - Developer Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Resetting margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0d0c22;
+            color: #fff;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            background-color: rgba(18, 18, 32, 0.9);
+            z-index: 1000;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 20px;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: #9c97f1;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            padding: 0 100px;
+            background-color: #0d0c22;
+            animation: fadeIn 2s ease;
+        }
+
+        .hero-content {
+            max-width: 50%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero .highlight {
+            color: #9c97f1;
+        }
+
+        .hero img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Resume Button */
+        .resume-button {
+            display: inline-block;
+            padding: 12px 30px;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            background-color: #9c97f1;
+            color: #0d0c22;
+            border-radius: 50px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .resume-button:hover {
+            background-color: #6b61d7;
+        }
+
+        .section {
+            padding: 60px 20px;
+            background-color: #1f1b3a;
+            color: #fff;
+        }
+
+        .section h2 {
+            text-align: center;
+            color: #b3a5ff;
+            margin-bottom: 30px;
+        }
+
+        .about-card {
+            background-color: #2d2753;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .skills,
+        .projects,
+        .education {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .skills .item,
+        .projects .item,
+        .education .item {
+            background-color: #2d2c53;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .skills .item h3,
+        .projects .item h3,
+        .education .item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .skills .item p,
+        .projects .item p,
+        .education .item p {
+            font-size: 1.1rem;
+            color: #c1c1c1;
+        }
+
+        .projects {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background-color: #2d2753;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .project-card h3 {
+            margin-bottom: 10px;
+            color: #b3a5ff;
+        }
+
+
+        .custom-footer {
+            background-color: #07061a;
+            text-align: center;
+            padding: 40px 20px;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .custom-footer h2 {
+            color: #9c97f1;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .footer-nav {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-nav li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav li a:hover {
+            color: #9c97f1;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #9c97f1;
+        }
+
+        .custom-footer p {
+            font-size: 0.95rem;
+            color: #c1c1c1;
+        }
+
+        /* General styling for the footer column */
+        .footer-column {
+            background-color: #1c1b38;
+            /* Soft background color */
+            padding: 20px;
+            /* Internal spacing */
+            border-radius: 4px;
+            /* Slightly rounded corners */
+            width: 300px;
+            /* You can adjust the width as needed */
+            margin: 20px auto;
+            /* Center the footer block horizontally */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow for depth */
+        }
+
+        /* Style for the heading inside the footer */
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Remove simple list bullets and padding */
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Wider and more balanced experience box */
+        .experience-box {
+            background-color: #2d2c53;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 0 auto;
+            width: 70%;
+            max-width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+
+        .experience-box h3 {
+            font-size: 1.8rem;
+            color: #9c97f1;
+            margin-bottom: 10px;
+        }
+
+        .experience-box p {
+            font-size: 1.1rem;
+            color: #c1c1c1;
+            line-height: 1.6;
+        }
+
+        /* Spacing for individual list items */
+        .footer-column li {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* Styling the links */
+        .footer-column a {
+            color: #064e92;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        /* Hover effect for links */
+        .footer-column a:hover {
+            color: #005bb5;
+            text-decoration: underline;
+        }
+
+        .footer-content {
+            text-align: center;
+            color: #c1c1c1;
+        }
+
+        .contact-info {
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        .contact-info a {
+            color: #9c97f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #6b61d7;
+            text-decoration: underline;
+
+        }
+ /* Styling for the contact section */
+#contact {
+    background-color: #f4f4f9; /* Light background color */
+    padding: 40px;
+    text-align: center;
+}
+
+/* Contact form title */
+#contact h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Styling for the contact section */
+#contact {
+    background: linear-gradient(135deg, #0c0c22, #151547); /* Gradient background */
+    padding: 60px 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Contact form title */
+#contact h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+    color: #e2e2e4;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+}
+
+/* Styling for the contact box */
+.contact-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Styling for the form */
+.contact-form {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect on the form */
+.contact-form:hover {
+    transform: translateY(-10px); /* Subtle form hover effect */
+}
+
+/* Styling for the form inputs */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border: 2px solid #20093a;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+/* Focus effect for inputs/textarea */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #635275; /* Green border on focus */
+    outline: none;
+}
+
+/* Styling for the form button */
+.contact-form button {
+    background: linear-gradient(135deg, #320764, #320764);  
+    color: white;                                           
+    padding: 14px 24px;                                      
+    border: none;                                             
+    border-radius: 6px;                                        
+    cursor: pointer;                                        
+    font-size: 18px;                                           
+    font-weight: bold;                                       
+    width: 100%;                                               
+   
+}
+
+/* Hover effect for the button */
+.contact-form button:hover {
+    background: linear-gradient(135deg, #5c417a, #320764);  
+    transform: translateY(-5px);                            
+}
+
+/* Optional: Responsive design */
+@media (max-width: 768px) {
+    #contact {
+        padding: 40px 10px;
+    }
+
+    .contact-form {
+        padding: 25px;
+    }
+}
+
+/* Optional: Responsive design to make sure it looks good on smaller screens */
+@media (max-width: 600px) {
+    .contact-form {
+        padding: 20px;
+    }
+}
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">Vidhi's Portfolio</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+
+
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm <span class="highlight">Vidhi Mavani</span></h1>
+            <p>I am a passionate <span id="element"></span></p>
+
+            <!-- Resume Button -->
+
+            <a href="VM_resum.pdf" class="resume-button" target="_blank">Download Resume</a>
+
+
+        </div>
+        <div class="hero-image">
+            <img src="ab.jpg" alt="Vidhi Mavani">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="about-card">
+            <p>
+                Hello, I'm <strong>Vidhi Mavani</strong>. I am a pre-final year student pursuing a bachelor's degree in
+                Computer Engineering from Gujarat Technological University.
+                I'm an aspiring <strong>AI/ML developer</strong> with a strong passion for building intelligent systems
+                that solve real-world problems.
+                I enjoy working on projects involving <strong>machine learning</strong>.
+                I’ve gained hands-on experience through internships and personal projects, using tools like
+                <strong>Python</strong>, <strong>TensorFlow</strong>, <strong>Scikit-learn</strong>, and
+                <strong>OpenCV</strong>.
+                Currently, I'm exploring areas like <strong>computer vision</strong>, and
+                <strong>AI-driven web applications</strong>.
+                I am always excited to <strong>learn</strong>, <strong>collaborate</strong>, and <strong>grow</strong>
+                in the rapidly evolving field of artificial intelligence.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+
+        <!-- Technical Skills -->
+        <h3 style="font-size: 2rem; margin-bottom: 20px;">Technical Skills</h3>
+        <div class="skills">
+            <div class="item">
+                <h3>HTML & CSS</h3>
+                <p>Building clean, semantic, and responsive websites</p>
+            </div>
+            <div class="item">
+                <h3>JavaScript</h3>
+                <p>Building interactive and dynamic websites</p>
+            </div>
+            <div class="item">
+                <h3>Python</h3>
+                <p>Writing clean, efficient scripts and web apps</p>
+            </div>
+            <div class="item">
+                <h3>MongoDB</h3>
+                <p>Working with NoSQL databases</p>
+            </div>
+            <div class="item">
+                <h3>Node.js & Express</h3>
+                <p>Creating APIs and backend services</p>
+            </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <h3 style="font-size: 2rem; margin: 60px 0 20px;">Soft Skills</h3>
+        <div class="skills">
+            <div class="item">
+                <h3>Communication</h3>
+                <p>Effectively sharing ideas and collaborating</p>
+            </div>
+            <div class="item">
+                <h3>Problem Solving</h3>
+                <p>Analyzing and resolving challenges efficiently</p>
+            </div>
+            <div class="item">
+                <h3>Time Management</h3>
+                <p>Meeting deadlines and managing workload</p>
+            </div>
+            <div class="item">
+                <h3>Teamwork</h3>
+                <p>Working collaboratively in team environments</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2>Experience</h2>
+        <div class="experience-box">
+            <h3>Spark to Idea</h3>
+            <p><strong>Position:</strong> AI/ML Intern</p>
+            <p><strong>Duration:</strong> 1 Month</p>
+            <p>I worked on foundational concepts of Artificial Intelligence and Machine Learning, gaining hands-on
+                experience in model building and data handling. Collaborated with a team to develop and deploy machine
+                learning models for real-world applications. Gained hands-on experience in data preprocessing, model
+                training, and evaluation using tools like Python, TensorFlow, and scikit-learn. </p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <h3>Portfolio Website</h3>
+                <p>
+                    A personal portfolio showcasing my web development and design skills. Built using HTML, CSS, and
+                    JavaScript to highlight my projects, experiences, and technical expertise.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>OutfitOrbit - Clothes on Rent</h3>
+                <p>
+                    A full-stack web application that tackles fashion waste by promoting clothing rentals. Users can
+                    list, browse, and rent clothes for special occasions. Built with MongoDB, Express.js, Node.js, and
+                    HTML/CSS.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>Automatic Plant Watering System</h3>
+                <p>
+                    An IoT-based system designed to automatically water plants based on soil moisture levels. Built
+                    using Arduino, soil moisture sensors, and a water pump, ensuring efficient and timely watering with
+                    minimal human intervention.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <h2>Education</h2>
+        <div class="education">
+
+            <div class="item">
+                <h3>H.S.C</h3>
+                <p>Grade: 59.38</p>
+                <p>I completed class 12 education at Sadhna Vidhya Bhavan, Surat</p>
+            </div>
+            <div class="item">
+                <h3>S.S.C</h3>
+                <p>Grade: 79.89</p>
+                <p>I complet my class 10 education at Sadhna Vidhya Bhavan, Surat</p>
+            </div>
+        </div>
+    </section>
+    <!-- College Results Section -->
+    <section id="results" class="section">
+        <h2>College Results</h2>
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                <thead style="background-color: #2d2c53;">
+                    <tr>
+                        <th style="padding: 12px; border: 1px solid #444;">Semester</th>
+                        <th style="padding: 12px; border: 1px solid #444;">SGPA</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #444;">1st</td>
+                        <td style="padding: 12px; border: 1px solid #444;">6.65</td>
+
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #444;">2nd</td>
+                        <td style="padding: 12px; border: 1px solid #444;">7.35</td>
+
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #444;">3rd</td>
+                        <td style="padding: 12px; border: 1px solid #444;">8.34</td>
+
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #444;">4th</td>
+                        <td style="padding: 12px; border: 1px solid #444;">7.69</td>
+
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #444;">5th</td>
+                        <td style="padding: 12px; border: 1px solid #444;">7.86</td>
+
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <h2>Contact Me</h2>
+        <div class="contact-box">
+            <form class="contact-form" action="submit_contact.php" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="_replyto" placeholder="Your Email" required>
+                <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="custom-footer">
+        <h2>Vidhi Mavani</h2>
+        <ul class="footer-nav">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+        </ul>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="contact-info">
+            <p>Email: <a href="mailto:mavanividhi56@gmail.com">mavanividhi56@gmail.com</a></p>
+            <p>Phone: <a href="tel:+919909585429">+91 9909585429</a></p>
+        </div>
+        <p>© 2025 Vidhi Mavani. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['AI/ML ', 'Python programming'],
+            typeSpeed: 50,
+        });
+    </script>
+</body>
+
+</html>
